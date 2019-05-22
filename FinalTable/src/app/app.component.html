@@ -1,0 +1,69 @@
+<div style="margin-left: 80px">
+    <h2> Agents list manager </h2>
+  
+     <div class="row">         
+         <!-- Input field - user unosi traženu varijablu, zatim two way databinding *[(ngModel)]* 
+            pamti unos u ="data" te ga "onButtonClick()" povlači nazad i dodaje u listu -->  
+                <input type="text"  placeholder="Agent name" [(ngModel)]="name" >
+                <input type="text"  placeholder="Agent surname" [(ngModel)]="surname" >
+                <input type="text" placeholder="Regular working days" [(ngModel)]="regularWorkingDays" > 
+                <input type="text"  placeholder="Working sundays" [(ngModel)]="workingSundays" >
+                <div class="input-group-btn">
+<!-- Event binding, nakon što user pokrene radnju(u ovom slučaju klikne button) 
+    pokreće se "onButtonClick()" na način definiran u TS-u --> 
+                    <button class="btn btn-primary" (click)="onButtonClick()">Add agent</button>
+                    <button class="btn btn-primary" (click)="oneLetter(name)">Random slovo</button>
+
+                </div>
+     </div>
+  
+    <br />
+  
+</div>
+
+      <!-- Tablica iz Angular material -->
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Kolona sa podacima "name" -->
+    <ng-container matColumnDef="name">
+        <!-- Naziv kolone - Ime -->
+      <th mat-header-cell *matHeaderCellDef> Ime </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef> Prezime </th>
+      <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="regularWorkingDays">
+      <th mat-header-cell *matHeaderCellDef> Redovni radni dani </th>
+      <td mat-cell *matCellDef="let element"> {{element.regularWorkingDays}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="workingSundays">
+      <th mat-header-cell *matHeaderCellDef> Radne nedjelje </th>
+      <td mat-cell *matCellDef="let element"> {{element.workingSundays}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="totalHours">
+      <th mat-header-cell *matHeaderCellDef> Ukupni sati </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalHours}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="sundayHours">
+      <th mat-header-cell *matHeaderCellDef> Sati nedjeljom </th>
+      <td mat-cell *matCellDef="let element"> {{element.sundayHours}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="payment">
+      <th mat-header-cell *matHeaderCellDef> Plaća </th>
+      <td mat-cell *matCellDef="let element"> {{element.payment}} </td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <h4>Nasumično slovo iz imena agenta je {{nameCreation}} </h4>
