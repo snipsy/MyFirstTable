@@ -9,6 +9,9 @@ import 'rxjs/add/observable/of';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+// 1. Lekcija naučiti pisati kod identacije su bitne, odmah na početku se treba naučiti pisati lijep kod
+// 1.1 Codeacademy
+// 2. Sql naučiti osnovne komande i kako napraviti tablicu i jednostavnu bazu.
 export class AppComponent {
 
   // Deklaracija varijabli komponente
